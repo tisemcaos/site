@@ -2,179 +2,492 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Douglas Informática</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Douglas Informática • Soluções em TI</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+    }
+
+    :root {
+      --bg-dark: #0b0b0b;
+      --card-bg: #111111;
+      --whatsapp: #25D366;
+      --whatsapp-dark: #075E54;
+      --text-light: #f0f0f0;
+      --text-dim: #b0b0b0;
+      --border-glow: rgba(37, 211, 102, 0.15);
+      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 25px 40px -12px rgba(0, 0, 0, 0.8);
+      --transition: all 0.2s ease;
     }
 
     body {
-      background: #0a0a0a;
-      color: #fff;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      font-family: system-ui, 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+      line-height: 1.5;
+      scroll-behavior: smooth;
     }
 
-    header {
-      padding: 30px 20px;
+    .wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+
+    /* header */
+    .hero {
       text-align: center;
+      padding: 1.5rem 0 0.75rem;
     }
-
-    h1 {
+    .hero h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FFFFFF 30%, #25D366 80%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(37, 211, 102, 0.12);
+      backdrop-filter: blur(4px);
+      padding: 0.3rem 0.9rem;
+      border-radius: 60px;
+      font-size: 0.8rem;
       color: #25D366;
-      font-size: 24px;
+      margin: 0.5rem 0 0.25rem;
+    }
+    .sub {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      margin-top: 6px;
     }
 
-    .subtitle {
-      color: #aaa;
-      margin-top: 5px;
-      font-size: 14px;
+    /* botões */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 1.5rem 0;
     }
-
-    .container {
-      padding: 20px;
-    }
-
-    .card {
-      background: #111;
-      border-radius: 15px;
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-
-    .card h3 {
-      color: #25D366;
-      margin-bottom: 5px;
-    }
-
     .btn {
-      display: block;
-      text-align: center;
-      padding: 15px;
-      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0.9rem 1.2rem;
+      border-radius: 60px;
       text-decoration: none;
-      font-weight: bold;
-      margin-top: 15px;
-      transition: 0.3s;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      background: none;
     }
-
     .btn-primary {
-      background: #25D366;
+      background: var(--whatsapp);
       color: #000;
+      box-shadow: 0 5px 12px rgba(37, 211, 102, 0.25);
+    }
+    .btn-primary:hover {
+      background: #20b859;
+      transform: scale(1.02);
+      box-shadow: 0 8px 18px rgba(37, 211, 102, 0.35);
+    }
+    .btn-weebly {
+      background: linear-gradient(135deg, #2c3e66, #1a2639);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .btn-weebly:hover {
+      transform: scale(1.02);
+      background: linear-gradient(135deg, #3a4d7a, #2a3a55);
+    }
+    .btn-services {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #ddd;
+    }
+    .btn-services:hover {
+      background: rgba(37, 211, 102, 0.1);
+      border-color: #25D36660;
+      color: #25D366;
     }
 
-    .btn-secondary {
-      background: #075E54;
-      color: #fff;
+    /* popup moderno */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .popup-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .popup-container {
+      background: linear-gradient(145deg, #121212, #0a0a0a);
+      border-radius: 32px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 1.8rem;
+      position: relative;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(37, 211, 102, 0.2);
+      box-shadow: var(--shadow-lg);
+    }
+    .popup-overlay.active .popup-container {
+      transform: scale(1);
+    }
+    .popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .popup-header h2 {
+      font-size: 1.5rem;
+      color: #25D366;
+    }
+    .close-popup {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    .close-popup:hover {
+      background: #ff4444;
+      transform: rotate(90deg);
+    }
+    .services-popup-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .service-popup-item {
+      background: #1a1a1a;
+      border-radius: 20px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    .service-popup-item:hover {
+      background: #222;
+      border-color: #25D366;
+      transform: translateX(5px);
+    }
+    .service-popup-icon {
+      font-size: 2rem;
+    }
+    .service-popup-info {
+      flex: 1;
+    }
+    .service-popup-info h3 {
+      color: #25D366;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+    .service-popup-info p {
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+    .service-popup-arrow {
+      color: #25D366;
+      font-size: 1.2rem;
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .service-popup-item:hover .service-popup-arrow {
+      opacity: 1;
+      transform: translateX(3px);
     }
 
-    .btn:hover {
-      transform: scale(1.03);
-      opacity: 0.9;
+    /* scrollbar personalizada */
+    .popup-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    .popup-container::-webkit-scrollbar-track {
+      background: #1a1a1a;
+      border-radius: 10px;
+    }
+    .popup-container::-webkit-scrollbar-thumb {
+      background: #25D366;
+      border-radius: 10px;
     }
 
-    .services {
-      margin-top: 20px;
+    /* informações adicionais */
+    .info-block {
+      background: linear-gradient(145deg, #0e0e0e, #090909);
+      border-radius: 2rem;
+      padding: 1rem 1.3rem;
+      margin: 1.5rem 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      border: 1px solid #1a1a1a;
     }
-
-    .service-item {
+    .info-text {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px;
-      border-radius: 10px;
-      background: #151515;
-      margin-bottom: 10px;
+      font-size: 0.9rem;
     }
-
-    .service-item span {
-      font-size: 20px;
+    .chip {
+      background: #25D36610;
+      padding: 5px 12px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      color: #25D366;
     }
 
     .footer {
       text-align: center;
-      font-size: 12px;
-      color: #777;
-      padding: 20px;
+      font-size: 0.7rem;
+      color: #555;
+      padding: 2rem 0 1rem;
+      border-top: 1px solid #1c1c1c;
+      margin-top: 1rem;
     }
 
-    /* Botão flutuante */
-    .whatsapp-float {
+    /* botão flutuante */
+    .float-wa {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: #000;
-      padding: 15px 18px;
-      border-radius: 50px;
-      font-weight: bold;
+      bottom: 1.2rem;
+      right: 1.2rem;
+      background: var(--whatsapp);
+      width: 54px;
+      height: 54px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      transition: 0.2s;
+      z-index: 99;
+    }
+    .float-wa:hover {
+      transform: scale(1.07);
+      background: #20b859;
+    }
+    .float-wa span {
+      font-size: 28px;
     }
 
+    /* animações */
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateY(12px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .btn-group, .info-block {
+      animation: fadeSlide 0.4s ease backwards;
+    }
   </style>
 </head>
-
 <body>
-
-<header>
-  <h1>Douglas Informática</h1>
-  <div class="subtitle">💻 Suporte rápido e sem complicação</div>
-  <div class="subtitle">📍 Belo Horizonte e região</div>
-</header>
-
-<div class="container">
-
-  <a class="btn btn-primary" href="https://wa.me/5531999291567?text=Olá,%20vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%20meu%20computador." target="_blank">
-    📲 Falar no WhatsApp
-  </a>
-
-  <a class="btn btn-secondary" href="#">
-    💻 Ver mais informações
-  </a>
-
-  <div class="services">
-
-    <div class="card">
-      <h3>🛠️ Formatação</h3>
-      <p>Instalação limpa e rápida para deixar seu PC novo novamente.</p>
+<div class="wrapper">
+  <div class="hero">
+    <h1>Douglas Informática</h1>
+    <div class="badge">
+      <span>⚡</span> Suporte express • BH e região
     </div>
-
-    <div class="card">
-      <h3>⚡ Upgrade</h3>
-      <p>SSD e memória para deixar seu computador muito mais rápido.</p>
-    </div>
-
-    <div class="card">
-      <h3>🔒 Remoção de vírus</h3>
-      <p>Limpeza completa e proteção contra ameaças.</p>
-    </div>
-
-    <div class="card">
-      <h3>🚀 Otimização</h3>
-      <p>Correção de lentidão e melhoria de desempenho.</p>
-    </div>
-
-    <div class="card">
-      <h3>💻 Suporte geral</h3>
-      <p>Resolução de erros, travamentos e problemas diversos.</p>
-    </div>
-
+    <div class="sub">💻 Atendimento rápido, sem enrolação</div>
   </div>
 
+  <!-- Botões principais -->
+  <div class="btn-group">
+    <a class="btn btn-primary" href="https://wa.me/5531999291567?text=Olá,%20vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%20meu%20computador." target="_blank" rel="noopener noreferrer">
+      📲 Falar agora no WhatsApp
+    </a>
+    <a class="btn btn-weebly" href="https://dminformatica.weebly.com/" target="_blank" rel="noopener noreferrer">
+      🌐 Visitar nosso site oficial
+    </a>
+    <button class="btn btn-services" id="openServicesBtn">
+      🔧 Ver todos os serviços
+    </button>
+  </div>
+
+  <!-- Bloco informativo -->
+  <div class="info-block">
+    <div class="info-text">
+      <span>📍</span> Belo Horizonte · Atendimento remoto ou presencial
+    </div>
+    <div class="chip">🔧 diagnóstico gratuito</div>
+  </div>
+  
+  <div class="footer">
+    © 2026 Douglas Informática · Soluções que aceleram seu dia
+  </div>
 </div>
 
-<a class="whatsapp-float" href="https://wa.me/5531999291567?text=Olá,%20preciso%20de%20ajuda%20com%20meu%20computador." target="_blank">
-  💬
+<!-- Botão flutuante WhatsApp -->
+<a class="float-wa" href="https://wa.me/5531999291567?text=Olá,%20preciso%20de%20ajuda%20com%20meu%20computador." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <span>💬</span>
 </a>
 
-<div class="footer">
-  © 2026 Douglas Informática
+<!-- POPUP MODERNO DE SERVIÇOS -->
+<div class="popup-overlay" id="servicesPopup">
+  <div class="popup-container">
+    <div class="popup-header">
+      <h2>🛠️ Nossos Serviços</h2>
+      <button class="close-popup" id="closePopupBtn">✕</button>
+    </div>
+    <div class="services-popup-grid">
+      <div class="service-popup-item" data-service="Formatação" data-message="Olá! Preciso de uma FORMATAÇÃO limpa e rápida para meu computador. Podemos conversar?">
+        <div class="service-popup-icon">🛠️</div>
+        <div class="service-popup-info">
+          <h3>Formatação</h3>
+          <p>Instalação limpa e veloz, PC como novo.</p>
+        </div>
+        <div class="service-popup-arrow">→</div>
+      </div>
+      <div class="service-popup-item" data-service="Upgrade" data-message="Olá! Quero fazer um UPGRADE no meu PC (SSD/memória RAM). Me ajuda com os melhores preços?">
+        <div class="service-popup-icon">⚡</div>
+        <div class="service-popup-info">
+          <h3>Upgrade express</h3>
+          <p>SSD + memória RAM, performance imediata.</p>
+        </div>
+        <div class="service-popup-arrow">→</div>
+      </div>
+      <div class="service-popup-item" data-service="Remoção de vírus" data-message="Olá! Meu computador está com VÍRUS. Preciso de uma limpeza completa e proteção. Como funciona?">
+        <div class="service-popup-icon">🔒</div>
+        <div class="service-popup-info">
+          <h3>Remoção de vírus</h3>
+          <p>Limpeza profunda e proteção ativa.</p>
+        </div>
+        <div class="service-popup-arrow">→</div>
+      </div>
+      <div class="service-popup-item" data-service="Otimização" data-message="Olá! Meu computador está muito LENTO. Preciso de OTIMIZAÇÃO completa para melhorar o desempenho.">
+        <div class="service-popup-icon">🚀</div>
+        <div class="service-popup-info">
+          <h3>Otimização</h3>
+          <p>Fim da lentidão, boot rápido.</p>
+        </div>
+        <div class="service-popup-arrow">→</div>
+      </div>
+      <div class="service-popup-item" data-service="Suporte geral" data-message="Olá! Estou com problemas no meu computador (erros/travamentos). Preciso de SUPORTE GERAL especializado.">
+        <div class="service-popup-icon">💻</div>
+        <div class="service-popup-info">
+          <h3>Suporte geral</h3>
+          <p>Erros, travamentos, drivers e redes.</p>
+        </div>
+        <div class="service-popup-arrow">→</div>
+      </div>
+    </div>
+  </div>
 </div>
 
+<script>
+  (function() {
+    // Elementos do popup
+    const popup = document.getElementById('servicesPopup');
+    const openBtn = document.getElementById('openServicesBtn');
+    const closeBtn = document.getElementById('closePopupBtn');
+    
+    // Função para abrir popup
+    function openPopup() {
+      popup.classList.add('active');
+      document.body.style.overflow = 'hidden'; // impede scroll do fundo
+    }
+    
+    // Função para fechar popup
+    function closePopup() {
+      popup.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    // Abrir ao clicar no botão
+    if (openBtn) {
+      openBtn.addEventListener('click', openPopup);
+    }
+    
+    // Fechar ao clicar no X
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closePopup);
+    }
+    
+    // Fechar ao clicar no overlay (fundo escuro)
+    popup.addEventListener('click', function(e) {
+      if (e.target === popup) {
+        closePopup();
+      }
+    });
+    
+    // Fechar com tecla ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && popup.classList.contains('active')) {
+        closePopup();
+      }
+    });
+    
+    // Cada serviço do popup - redireciona para WhatsApp com mensagem personalizada
+    const serviceItems = document.querySelectorAll('.service-popup-item');
+    const phoneNumber = '5531999291567'; // Número sem '+' e sem espaços
+    
+    serviceItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const serviceName = this.getAttribute('data-service');
+        const customMessage = this.getAttribute('data-message');
+        
+        // Mensagem personalizada + emoji pra ficar bonito
+        let finalMessage = customMessage;
+        if (!finalMessage) {
+          finalMessage = `Olá! Gostaria de mais informações sobre o serviço de ${serviceName}. Podemos conversar?`;
+        }
+        
+        // Codificar a mensagem para URL
+        const encodedMessage = encodeURIComponent(finalMessage);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        
+        // Abrir WhatsApp
+        window.open(whatsappUrl, '_blank');
+        
+        // Fechar popup após clicar (opcional, melhora experiência)
+        closePopup();
+      });
+    });
+    
+    // Feedback visual ao clicar (prevent double scroll)
+    console.log('✅ Popup de serviços integrado com mensagens personalizadas');
+  })();
+</script>
 </body>
 </html>
