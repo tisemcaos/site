@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programas - DM Informática</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      font-family: 'Inter', sans-serif;
+      color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 500px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 40px;
+      padding: 30px 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1) inset;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #aaa;
+      text-decoration: none;
+      margin-bottom: 25px;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: #ff8c00; }
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #f7971e, #ffd200);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+    .sub-logo {
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #aaa;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      color: #ff8c00;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    .program-card {
+      background: rgba(0,0,0,0.3);
+      border-radius: 25px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    .program-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+      border-color: rgba(255, 140, 0, 0.4);
+    }
+    .program-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #ff8c00, #ff5710);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: white;
+      flex-shrink: 0;
+    }
+    .program-info h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+    .program-info p {
+      font-size: 0.85rem;
+      color: #aaa;
+      line-height: 1.4;
+    }
+    .btn-download {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 18px;
+      background: linear-gradient(135deg, #ff8c00, #ff5710);
+      border-radius: 30px;
+      color: white;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255, 140, 0, 0.4);
+    }
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar ao início</a>
+    
+    <div class="logo">DM INFORMÁTICA</div>
+    <div class="sub-logo">Gold Tec · Soluções Inteligentes</div>
+    
+    <h2 class="page-title">📦 Programas Recomendados</h2>
+    
+    <div class="program-card">
+      <div class="program-icon"><i class="fas fa-shield-virus"></i></div>
+      <div class="program-info">
+        <h3>Antivírus Essencial</h3>
+        <p>Proteção completa contra vírus, malware e ransomware. Navegação segura garantida.</p>
+        <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+      </div>
+    </div>
+    
+    <div class="program-card">
+      <div class="program-icon"><i class="fas fa-broom"></i></div>
+      <div class="program-info">
+        <h3>Limpador de Sistema</h3>
+        <p>Remova arquivos desnecessários e libere espaço em disco. Seu PC mais rápido.</p>
+        <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+      </div>
+    </div>
+    
+    <div class="program-card">
+      <div class="program-icon"><i class="fas fa-gauge-high"></i></div>
+      <div class="program-info">
+        <h3>Otimizador de Performance</h3>
+        <p>Ajuste as configurações do Windows para obter o máximo desempenho em jogos.</p>
+        <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+      </div>
+    </div>
+    
+    <div class="program-card">
+      <div class="program-icon"><i class="fas fa-file-zipper"></i></div>
+      <div class="program-info">
+        <h3>Compactador de Arquivos</h3>
+        <p>WinRAR, 7-Zip e outras ferramentas essenciais para compactar e extrair.</p>
+        <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+      </div>
+    </div>
+    
+    <p class="footer-note">© 2024 DM Informática & Gold Tec</p>
+  </div>
+</body>
+</html>
