@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>DM Informática & Gold Tec - Seu PC Turbo</title>
+  <!-- Fontes modernas e ícones -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      font-family: 'Inter', sans-serif;
+      color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 40px;
+      padding: 30px 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1) inset;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #f7971e, #ffd200);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 5px;
+    }
+    .sub-logo {
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+
+    /* Banner */
+    .banner {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Hero Text */
+    .hero-text {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .hero-text h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #ff8c00;
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+    .hero-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    /* Botões */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 35px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 25px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      text-align: center;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #ff8c00, #ff5710);
+      color: white;
+      box-shadow: 0 10px 25px rgba(255, 140, 0, 0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(255, 140, 0, 0.6);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-color: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #ff8c00;
+    }
+
+    /* Seção de Teste de Velocidade */
+    .speed-test {
+      background: rgba(0,0,0,0.3);
+      border-radius: 25px;
+      padding: 20px;
+      margin-bottom: 25px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .speed-test i {
+      color: #ff8c00;
+      margin-right: 8px;
+    }
+
+    /* Destaque USB Killer */
+    .highlight-card {
+      background: linear-gradient(135deg, rgba(220, 20, 60, 0.2), rgba(0,0,0,0.4));
+      border: 1px solid rgba(220, 20, 60, 0.4);
+      border-radius: 25px;
+      padding: 20px;
+      margin-bottom: 25px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .highlight-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+    .highlight-card h3 {
+      color: #dc143c;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 5px;
+    }
+
+    /* Seção Contato */
+    .contact-row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 30px 0 15px;
+      gap: 15px;
+    }
+    .contact-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 0.9rem;
+    }
+    .contact-link i {
+      font-size: 2.3rem;
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+    .contact-link:hover i {
+      background: #ff8c00;
+      color: #000;
+      transform: scale(1.1);
+    }
+    .contact-link:hover {
+      color: #fff;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    /* Responsivo extra */
+    @media (max-width: 400px) {
+      .container {
+        padding: 20px 15px;
+      }
+      .logo {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- HEADER -->
+    <div class="header">
+      <div class="logo">DM INFORMÁTICA</div>
+      <div class="sub-logo">Gold Tec · Soluções Inteligentes</div>
+    </div>
+
+    <!-- BANNER PRINCIPAL (Imagem do header original) -->
+    <img src="https://dminformatica.weebly.com/uploads/5/9/6/6/59666563/header_images/1545958021.jpg" 
+         alt="Técnico de informática trabalhando" 
+         class="banner" 
+         loading="lazy">
+
+    <!-- CHAMADA PRINCIPAL -->
+    <div class="hero-text">
+      <h1>Seu PC está lento? 🐢</h1>
+      <p>Não se preocupe! A <strong style="color:#ff8c00;">Gold Tec</strong> tem a solução definitiva. 
+      Escolha os melhores programas e transforme seu computador em uma máquina poderosa.</p>
+    </div>
+
+    <!-- BOTÕES DE AÇÃO -->
+    <div class="btn-group">
+      <a href="#" class="btn btn-primary">
+        <i class="fas fa-rocket"></i> Ver Programas Essenciais
+      </a>
+      <a href="#" class="btn btn-secondary">
+        <i class="fas fa-dollar-sign"></i> Fazer Orçamento Agora
+      </a>
+    </div>
+
+    <!-- TESTE DE VELOCIDADE -->
+    <div class="speed-test">
+      <p><i class="fas fa-tachometer-alt"></i> <strong>Internet lenta?</strong></p>
+      <a href="#" class="btn btn-outline" style="margin-top:10px; display: flex; width: 100%; justify-content: center;">
+        <i class="fas fa-play"></i> Testar Velocidade da Conexão
+      </a>
+    </div>
+
+    <!-- DESTAQUE USB KILLER -->
+    <div class="highlight-card">
+      <img src="https://dminformatica.weebly.com/uploads/5/9/6/6/59666563/published/789031650.jpg?1545956388" alt="USB Killer" loading="lazy">
+      <div>
+        <h3><i class="fas fa-bolt"></i> USB Killer</h3>
+        <p style="font-size:0.85rem; line-height:1.4;">O polêmico pendrive que pode "fritar" computadores. Entenda os riscos.</p>
+        <a href="#" style="color:#dc143c; font-size:0.8rem; font-weight: bold;">Saiba mais →</a>
+      </div>
+    </div>
+
+    <!-- CONTATO -->
+    <div class="contact-row">
+      <a href="https://wa.me/5531999291567" target="_blank" class="contact-link">
+        <i class="fab fa-whatsapp"></i>
+        <span>(31) 99929-1567</span>
+      </a>
+      <a href="https://www.instagram.com/dminfodouglas/" target="_blank" class="contact-link">
+        <i class="fab fa-instagram"></i>
+        <span>@dminfodouglas</span>
+      </a>
+    </div>
+
+    <p class="footer-note">© 2024 DM Informática & Gold Tec</p>
+  </div>
+</body>
+</html>
